@@ -17,11 +17,13 @@
         <div class="jumbotron">
             <table style="width:100%">
                 <tr>
+                    <th></th>
                     <th>Content</th>
                     <th>Posted Date</th>
                     <th>Sent By</th>
                 </tr>
                 <tr th:each="message : ${messages}">
+                    <td th:text="${message.id}"></td>
                     <td th:text="${message.content}"></td>
                     <td th:text="${message.postedDate}"></td>
                     <td th:text="${message.sentBy}"></td>

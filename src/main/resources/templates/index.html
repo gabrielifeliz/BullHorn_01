@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff"></head>
+<body>
+    <nav th:replace="base :: navbar"></nav>
+    <p align="center"><a class="btn btn-primary btn-lg"
+          href="/add" role="button">
+        Add Message</a>
+    </p>
+    <div class="container">
+        <div class="jumbotron">
+            <table>
+                <tr>
+                    <th>Content</th>
+                    <th>Posted Date</th>
+                    <th>Sent By</th>
+                </tr>
+                <tr th:each="message : ${messages}">
+                    <td th:text="${message.content}"></td>
+                    <td th:text="${message.postedDate}"></td>
+                    <td th:text="${message.sentBy}"></td>
+                    <td>
+                        <p><a class="btn btn-primary btn-lg"
+                              th:href="@{/detail/{id}(id=${message.id})}"
+                              role="button"> View </a>
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <nav th:replace="base :: footer"></nav>
+    <th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

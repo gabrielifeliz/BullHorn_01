@@ -14,27 +14,28 @@
         Add Message</a>
     </p>
     <div class="container">
-        <div class="jumbotron">
-            <table style="width:100%">
+        <div class="jumbotron" th:each="message : ${messages}">
+            <table style="width:100%" border="1" >
                 <tr>
-                    <th></th>
-                    <th>Content</th>
-                    <th>Posted Date</th>
-                    <th>Sent By</th>
-                </tr>
-                <tr th:each="message : ${messages}">
                     <td th:text="${message.id}"></td>
+                </tr>
+                <tr>
                     <td th:text="${message.content}"></td>
-                    <td th:text="${message.postedDate}"></td>
-                    <td th:text="${message.sentBy}"></td>
-                    <td>
+                </tr>
+                <tr>    
+                    <td><br/>
                         <p><a class="btn btn-primary btn-lg"
                               th:href="@{/detail/{id}(id=${message.id})}"
                               role="button"> View </a>
                         </p>
                     </td>
+                </tr>    
+                <tr>
+                	<td th:text="${message.sentBy}"></td>    
                 </tr>
-
+                <tr>
+                    <td th:text="${message.postedDate}"></td>
+                </tr>
             </table>
         </div>
     </div>

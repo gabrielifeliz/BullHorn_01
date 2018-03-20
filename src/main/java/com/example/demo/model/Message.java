@@ -1,11 +1,15 @@
 package com.example.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Message {
@@ -18,8 +22,8 @@ public class Message {
     private String content;
 
     @NotNull
-    @Size(min=1)
-    private String postedDate;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private Date postedDate;
 
     @NotNull
     @Size(min=1)
@@ -41,11 +45,11 @@ public class Message {
         this.content = content;
     }
 
-    public String getPostedDate() {
+    public Date getPostedDate() {
         return postedDate;
     }
 
-    public void setPostedDate(String postedDate) {
+    public void setPostedDate(Date postedDate) {
         this.postedDate = postedDate;
     }
 
